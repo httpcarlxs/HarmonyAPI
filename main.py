@@ -40,5 +40,14 @@ remediation_statuses = he.remediation_response_general_api.get_all_remediation_o
 print(remediation_statuses.payload)
 print("\n-----------------------------------------\n")
 
+# Requisição de dados de vulnerabilidades para gerenciamento
+print("Requisitando dados de vulnerabilidades para gerenciamento")
+vulnerabilities = he.posture_management_vulnerabilities_api.get_vulnerabilities_data(
+    header_params={ "x-mgmt-run-as-job": 'on'}, 
+    query_params={"pageSize":2, "offset":0}
+)
+print(vulnerabilities.payload)
+print("\n-----------------------------------------\n")
+
 # Encerramento da sessão
 he.disconnect()
